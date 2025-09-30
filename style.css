@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+
+body { 
+    background-color: #FDFDFD;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 49px;
+    margin-top: 49px;
+}
+
+#container { 
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    box-shadow: 0 4px 20px 5px black;
+    width: 345px;
+    height: 531px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.row { 
+    display: flex;
+    flex-direction: row;
+}
+
+h1{ 
+    font-family: 'Lalezar';
+}
