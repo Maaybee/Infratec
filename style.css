@@ -13,19 +13,51 @@ body {
 #container { 
     background-color: #FFFFFF;
     border-radius: 30px;
-    box-shadow: 0 4px 20px 5px black;
+    box-shadow: 0px 4px 20px 1px rgba(0, 0, 0, 0.5);    
     width: 345px;
     height: 531px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    gap: 30px;
 }
 
 .row { 
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: start;
+    gap: 2vw;
 }
 
 h1{ 
     font-family: 'Lalezar';
+    margin: 0;
+}
+
+input{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    border: 1px solid #F5F5F5;
+    width: 25vw;
+    height: 5vh;
+    background-color: #F5F5F5;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+button { 
+    width: 25vw;
+    height: 5vh;
+    border-radius: 30px;
+    border: none;
+    background-color: #4539AF;
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+    font-family: 'Lalezar'
 }
