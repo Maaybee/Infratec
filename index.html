@@ -9,18 +9,19 @@
 </head>
 <body>
     <img src="logo.svg" id="logo"> 
-    <div id="container">
+    <div class="container">
         <div class="row">
             <img src="icone.svg" id="icone"> 
             <h1> Usuário </h1> 
 
         </div> 
 
-        <input> 
-        <button> Entrar
+        <input id="input-nome"> 
+        <button onclick="entrar()"> Entrar
 
         </button>
     </div>
 </body>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>  
 <script src="script.js"></script>
 </html>
