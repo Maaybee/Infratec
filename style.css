@@ -10,17 +10,17 @@ body {
     margin-top: 49px;
 }
 
-#container { 
+.container { 
     background-color: #FFFFFF;
     border-radius: 30px;
     box-shadow: 0px 4px 20px 1px rgba(0, 0, 0, 0.5);    
-    width: 345px;
-    height: 531px;
+    width: 80vw;
+    height: 60vh;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    gap: 30px;
+    gap: 5vh;
 }
 
 .row { 
@@ -34,6 +34,8 @@ body {
 h1{ 
     font-family: 'Lalezar';
     margin: 0;
+    letter-spacing: 2px;
+    font-weight: 500;
 }
 
 input{ 
@@ -42,7 +44,7 @@ input{
     align-items: center;
     border-radius: 30px;
     border: 1px solid #F5F5F5;
-    width: 25vw;
+    width: 55vw;
     height: 5vh;
     background-color: #F5F5F5;
     text-align: center;
@@ -51,8 +53,8 @@ input{
 }
 
 button { 
-    width: 25vw;
-    height: 5vh;
+    width: 55vw;
+    height: 6vh;
     border-radius: 30px;
     border: none;
     background-color: #4539AF;
@@ -60,4 +62,62 @@ button {
     color: white;
     font-size: 2rem;
     font-family: 'Lalezar'
+}
+
+button:hover { 
+    cursor: pointer;
+    background-color: #362A8C;
+}
+button:active { 
+    background-color: #271F6A;
+}
+button:focus { 
+    outline: none;
+}
+
+.option { 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 95%;
+
+}
+
+.home { 
+    width: 90vw;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lalezar';
+    gap: 1vh;
+
+}
+
+#options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    margin-left: 5vw;
+
+}
+
+#select{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30px;
+    border: 1px solid #F5F5F5;
+    width: 48vw;
+    height: 5vh;
+    background-color: #F5F5F5;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+#desc{
+    width: 41vw;
 }
