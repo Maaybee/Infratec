@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+    <h1>CAIXA</h1>
+
+    <div class="container home">
+        <div id="options"> 
+            <div class="option">
+                <h2>Data</h2>
+                <input type="date">
+
+            </div>
+
+            <div class="option">
+                <h2>Valor</h2>
+                <input id="campo-valor" type="text" placeholder="R$ 0,00">
+
+            </div>
+
+            <div class="option">
+                <h2>Tipo</h2>
+                <select id="select">
+                    <option style="color: green;">Entrada</option>
+                    <option style="color: red;">Saída</option>
+                </select>
+            </div>
+
+            <div class="option">
+                <h2>Categoria</h2>
+                <select id="select">
+                    <option>Alimentação</option>
+                    <option>Transporte</option>
+                    <option>Saúde</option>
+                    <option>Lazer</option>
+                    <option>Educação</option>
+                    <option>Outros</option>
+                </select>
+            </div>
+
+            <div class="option"> 
+                <h2>Descrição</h2>
+                <input id="desc" type="text" placeholder="Digite uma descrição">
+
+            </div>
+        </div>
+    
+        <button> Enviar </button>
+    </div>
+
+</body>
+<script src="https://unpkg.com/@supabase/supabase-js@2"></script>  
+<script src="script.js"></script>
+</html>
