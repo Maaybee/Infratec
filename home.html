@@ -13,7 +13,7 @@
         <div id="options"> 
             <div class="option">
                 <h2>Data</h2>
-                <input type="date">
+                <input type="date" id="data">
 
             </div>
 
@@ -25,7 +25,7 @@
 
             <div class="option">
                 <h2>Tipo</h2>
-                <select id="select">
+                <select class="select" id="select-tipo">
                     <option style="color: green;">Entrada</option>
                     <option style="color: red;">Saída</option>
                 </select>
@@ -33,12 +33,12 @@
 
             <div class="option">
                 <h2>Categoria</h2>
-                <select id="select">
-                    <option>Alimentação</option>
-                    <option>Transporte</option>
-                    <option>Saúde</option>
-                    <option>Lazer</option>
-                    <option>Educação</option>
+                <select class="select" id="select-categoria">
+                    <option>Despesas</option>
+                    <option>Pagamentos</option>
+                    <option>Material</option>
+                    <option>Serviços</option>
+                    <option>Ajuda de custo</option>
                     <option>Outros</option>
                 </select>
             </div>
@@ -50,7 +50,7 @@
             </div>
         </div>
     
-        <button> Enviar </button>
+        <button id="btn-enviar"> Enviar </button>
     </div>
 
 </body>
