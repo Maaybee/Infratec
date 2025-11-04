@@ -16,7 +16,7 @@ jobs:
       - name: Checkout do Código
         uses: actions/checkout@v4
 
-      # A VM do GitHub já tem o Android SDK, mas precisamos configurar o Java
+      # Configura o Java (JDK)
       - name: Configurar JDK
         uses: actions/setup-java@v3
         with:
@@ -40,8 +40,9 @@ jobs:
         run: ./android/gradlew assembleDebug
 
       # 5. Fazer o APK gerado ser baixável no GitHub
+      # --- ESTA É A CORREÇÃO ---
       - name: Upload do APK como Artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4  # <-- Alterado de v3 para v4
         with:
           name: meu-app-android-apk
           # Caminho onde o Gradle coloca o APK de debug
