@@ -1,0 +1,48 @@
+name: Build Android Debug APK
+
+on:
+  # O workflow será executado sempre que você fizer um 'push' para a branch principal
+  push:
+    branches: [ main, master ]
+  # Permite rodar o workflow manualmente pela aba 'Actions' do GitHub
+  workflow_dispatch:
+
+jobs:
+  build_android:
+    # A máquina virtual usada para rodar o build
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout do Código
+        uses: actions/checkout@v4
+
+      # A VM do GitHub já tem o Android SDK, mas precisamos configurar o Java
+      - name: Configurar JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      
+      # 1. Instalar dependências (NodeJS/Capacitor)
+      - name: Instalar Dependências
+        run: npm install
+
+      # 2. Sincronizar (caso haja alguma alteração no web app)
+      - name: Sincronizar Arquivos Web com Android
+        run: npx cap sync android
+
+      # 3. Dar permissão de execução ao Gradle Wrapper (essencial no Linux)
+      - name: Dar Permissão ao Gradle
+        run: chmod +x ./android/gradlew
+        
+      # 4. Compilar o APK de Debug (O APK de teste)
+      - name: Compilar APK Debug
+        run: ./android/gradlew assembleDebug
+
+      # 5. Fazer o APK gerado ser baixável no GitHub
+      - name: Upload do APK como Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: meu-app-android-apk
+          # Caminho onde o Gradle coloca o APK de debug
+          path: android/app/build/outputs/apk/debug/app-debug.apk
