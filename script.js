@@ -5,43 +5,43 @@ const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBh
 const supabaseClient = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 
-// 2. O bloco de código "inputValor" foi REMOVIDO.
-//    Ele estava causando um erro e parando o script,
-//    pois 'campo-valor' não existe no seu HTML de login.
+// 2. FUNÇÃO DE LOGIN
+// (Funções duplicadas e o código 'inputValor' foram removidos)
 
-
-// 3. Esta é a ÚNICA função 'entrar'
 async function entrar() {
-    // Pega o valor do input correto
-    const inputElement = document.getElementById('input-nome');
-    const nomeUsuario = inputElement.value; 
-
+   // Pega o valor do input de nome
+   const inputElement = document.getElementById('input-nome');
+   const nomeUsuario = inputElement.value; 
     if (!nomeUsuario) {
         alert('Por favor, digite o nome do usuário.');
         return;
     }
 
     const NOME_DA_TABELA = 'usuarios';
-    
-    // CORREÇÃO: O nome da coluna é 'user' (sem aspas dentro da string)
     const COLUNA_DO_NOME = 'user';
 
     try {
-        // 4. Executa a consulta
+        // 3. Executa a consulta
+        // Pede o 'id' (numérico) e o 'user' (nome)
         const { data, error } = await supabaseClient
             .from(NOME_DA_TABELA)
-            .select(COLUNA_DO_NOME)
-            // MELHORIA: .ilike() ignora maiúsculas/minúsculas ("Ju" ou "ju")
-            .ilike(COLUNA_DO_NOME, nomeUsuario); 
+            .select('id, user') // <-- Busca o ID numérico e o nome
+            .ilike(COLUNA_DO_NOME, nomeUsuario); // Busca por "Ju" ou "ju"
 
         if (error) {
             throw error;
         }
 
-        // 5. Verifica o resultado
+        // 4. Verifica o resultado
         if (data && data.length > 0) {
             // SUCESSO!
+            // data[0] agora será { id: 1, user: 'Ju' }
             alert('Acesso liberado! Bem-vindo, ' + nomeUsuario + '.');
+            
+            // 5. SALVA O ID NUMÉRICO (1) NO LOCALSTORAGE
+            // Seu outro script (script2.js) vai ler esta chave 'id'
+            localStorage.setItem('id', data[0].id); 
+
             location.href = "home.html"; // Redireciona
 
         } else {
