@@ -13,34 +13,31 @@ jobs:
       - name: Checkout do Código
         uses: actions/checkout@v4
 
-      # --- INÍCIO DA CORREÇÃO ---
-      # Configura o Java (JDK) para a versão 21
       - name: Configurar JDK
         uses: actions/setup-java@v3
         with:
           distribution: 'temurin'
-          java-version: '21' # <--- Alterado de 17 para 21
-      # --- FIM DA CORREÇÃO ---
+          java-version: '21' 
       
-      # 1. Instalar dependências (NodeJS/Capacitor)
       - name: Instalar Dependências
         run: npm install
 
-      # 2. Sincronizar (caso haja alguma alteração no web app)
+      # --- ETAPA ADICIONADA ---
+      # Garante que os ícones sejam gerados a partir da pasta 'resources/'
+      - name: Gerar Ícones
+        run: npx capacitor-assets generate --android
+
       - name: Sincronizar Arquivos Web com Android
         run: npx cap sync android
 
-      # 3. Dar permissão de execução ao Gradle Wrapper (essencial no Linux)
       - name: Dar Permissão ao Gradle
         working-directory: ./android   
         run: chmod +x ./gradlew        
         
-      # 4. Compilar o APK de Debug (O APK de teste)
       - name: Compilar APK Debug
         working-directory: ./android   
         run: ./gradlew assembleDebug   
 
-      # 5. Fazer o APK gerado ser baixável no GitHub
       - name: Upload do APK como Artifact
         uses: actions/upload-artifact@v4
         with:
