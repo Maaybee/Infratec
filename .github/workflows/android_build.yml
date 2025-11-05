@@ -22,8 +22,6 @@ jobs:
       - name: Instalar Dependências
         run: npm install
 
-      # --- ETAPA ADICIONADA ---
-      # Garante que os ícones sejam gerados a partir da pasta 'resources/'
       - name: Gerar Ícones
         run: npx capacitor-assets generate --android
 
@@ -34,9 +32,11 @@ jobs:
         working-directory: ./android   
         run: chmod +x ./gradlew        
         
-      - name: Compilar APK Debug
+      # --- MUDANÇA PRINCIPAL AQUI ---
+      # Limpa builds antigos (clean) e depois compila o APK (assembleDebug)
+      - name: Limpar e Compilar APK Debug
         working-directory: ./android   
-        run: ./gradlew assembleDebug   
+        run: ./gradlew clean assembleDebug   # <-- Adicionamos "clean" aqui
 
       - name: Upload do APK como Artifact
         uses: actions/upload-artifact@v4
