@@ -31,19 +31,22 @@ jobs:
       - name: Sincronizar Arquivos Web com Android
         run: npx cap sync android
 
+      # --- INÍCIO DA CORREÇÃO ---
       # 3. Dar permissão de execução ao Gradle Wrapper (essencial no Linux)
       - name: Dar Permissão ao Gradle
-        run: chmod +x ./android/gradlew
+        working-directory: ./android   # <--- Diz ao script para entrar na pasta 'android'
+        run: chmod +x ./gradlew        # <--- Executa o comando DENTRO da pasta 'android'
         
       # 4. Compilar o APK de Debug (O APK de teste)
       - name: Compilar APK Debug
-        run: ./android/gradlew assembleDebug
+        working-directory: ./android   # <--- Diz ao script para entrar na pasta 'android'
+        run: ./gradlew assembleDebug   # <--- Executa o comando DENTRO da pasta 'android'
+      # --- FIM DA CORREÇÃO ---
 
       # 5. Fazer o APK gerado ser baixável no GitHub
-      # --- ESTA É A CORREÇÃO ---
       - name: Upload do APK como Artifact
-        uses: actions/upload-artifact@v4  # <-- Alterado de v3 para v4
+        uses: actions/upload-artifact@v4
         with:
           name: meu-app-android-apk
-          # Caminho onde o Gradle coloca o APK de debug
+          # O caminho do APK é relativo à raiz do repositório
           path: android/app/build/outputs/apk/debug/app-debug.apk
