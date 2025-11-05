@@ -24,6 +24,16 @@
         </button>
     </div>
 </body>
+<script>
+  if ('serviceWorker' in navigator) {
+    // MUITO IMPORTANTE: Mude '/Infratec/' para o nome do seu repositório
+    // Se a URL for https://usuario.github.io/MeuApp/
+    // O caminho deve ser '/MeuApp/sw.js'
+    navigator.serviceWorker.register('/SEU-REPOSITORIO/sw.js')
+      .then(() => console.log('Service Worker Registrado'))
+      .catch(err => console.error('Erro no Service Worker:', err));
+  }
+</script>
 <script src="https://unpkg.com/@supabase/supabase-js@2"></script>  
 <script src="script.js"></script>
 </html>
