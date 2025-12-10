@@ -74,10 +74,10 @@ async function enviar() {
   // IMPORTANTE: As chaves respeitam as maiúsculas/minúsculas da sua tabela
   const dadosParaInserir = {
     data: inputData,            // Coluna 'data'
-    Tipo: selectTipo,           // Coluna 'Tipo'
-    Categoria: selectCategoria, // Coluna 'Categoria'
-    Descricao: inputDesc,       // Coluna 'Descricao'
-    Valor: valorNumerico,       // Coluna 'Valor'
+    tipo: selectTipo,           // Coluna 'Tipo'
+    categoria: selectCategoria, // Coluna 'Categoria'
+    descricao: inputDesc,       // Coluna 'Descricao'
+    valor: valorNumerico,       // Coluna 'Valor'
     id_user: usuario            // Coluna 'id_user' (Chave Estrangeira correta)
   };
 
